@@ -242,7 +242,8 @@ public final class Parameters
      */
     public PropertiesBuilderParameters properties()
     {
-        return createParametersProxy(new PropertiesBuilderParametersImpl(),
+        return createParametersProxy(
+                new PropertiesBuilderParametersImpl(),
                 PropertiesBuilderParameters.class,
                 FileBasedBuilderParameters.class);
     }
@@ -284,17 +285,18 @@ public final class Parameters
      *        implemented
      * @return the proxy object
      */
-    private <T> T createParametersProxy(Object target, Class<T> ifcClass,
-            Class<?>... superIfcs)
+    private <T> T createParametersProxy(Object target,
+                                        Class<T> ifcClass,
+                                        Class<?>... superIfcs)
     {
         Class<?>[] ifcClasses = new Class<?>[1 + superIfcs.length];
         ifcClasses[0] = ifcClass;
         System.arraycopy(superIfcs, 0, ifcClasses, 1, superIfcs.length);
-        Object obj =
-                Proxy.newProxyInstance(Parameters.class.getClassLoader(),
-                        ifcClasses, new ParametersIfcInvocationHandler(target));
-        getDefaultParametersManager().initializeParameters(
-                (BuilderParameters) obj);
+        Object obj = Proxy.newProxyInstance(
+                Parameters.class.getClassLoader(),
+                ifcClasses,
+                new ParametersIfcInvocationHandler(target));
+        getDefaultParametersManager().initializeParameters((BuilderParameters) obj);
         return ifcClass.cast(obj);
     }
 
@@ -308,8 +310,7 @@ public final class Parameters
      * {@code BuilderParameters} interface because here no fluent return value
      * is used.
      */
-    private static class ParametersIfcInvocationHandler implements
-            InvocationHandler
+    private static class ParametersIfcInvocationHandler implements InvocationHandler
     {
         /** The target object of reflection calls. */
         private final Object target;
@@ -330,8 +331,7 @@ public final class Parameters
          * target object and handles the return value correctly.
          */
         @Override
-        public Object invoke(Object proxy, Method method, Object[] args)
-                throws Throwable
+        public Object invoke(Object proxy, Method method, Object[] args) throws Throwable
         {
             Object result = method.invoke(target, args);
             return isFluentResult(method) ? proxy : result;
@@ -348,8 +348,8 @@ public final class Parameters
         private static boolean isFluentResult(Method method)
         {
             Class<?> declaringClass = method.getDeclaringClass();
-            return declaringClass.isInterface()
-                    && !declaringClass.equals(BuilderParameters.class);
+            return declaringClass.isInterface() &&
+                   !declaringClass.equals(BuilderParameters.class);
         }
     }
 }

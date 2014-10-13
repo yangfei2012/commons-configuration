@@ -40,6 +40,7 @@ public interface XMLBuilderParameters extends
         BasicBuilderProperties<XMLBuilderParameters>,
         FileBasedBuilderProperties<XMLBuilderParameters>,
         HierarchicalBuilderProperties<XMLBuilderParameters>,
-        XMLBuilderProperties<XMLBuilderParameters>, BuilderParameters
+        XMLBuilderProperties<XMLBuilderParameters>,
+        BuilderParameters
 {
 }

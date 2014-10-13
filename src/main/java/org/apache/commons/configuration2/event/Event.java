@@ -39,8 +39,7 @@ public class Event extends EventObject
      * The root event type for all configuration-related events. All specific
      * event types have this type as super direct (directly or indirectly).
      */
-    public static final EventType<Event> ANY =
-            new EventType<Event>(null, "ANY");
+    public static final EventType<Event> ANY = new EventType<Event>(null, "ANY");
 
     /**
      * Constant for the format used in toString() for a property representation.

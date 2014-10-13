@@ -153,7 +153,8 @@ public class BaseEventSource implements EventSource
     }
 
     @Override
-    public <T extends Event> void addEventListener(EventType<T> eventType,
+    public <T extends Event> void addEventListener(
+            EventType<T> eventType,
             EventListener<? super T> listener)
     {
         eventListeners.addEventListener(eventType, listener);

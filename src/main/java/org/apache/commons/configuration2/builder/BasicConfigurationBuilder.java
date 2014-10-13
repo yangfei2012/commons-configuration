@@ -477,8 +477,7 @@ public class BasicConfigurationBuilder<T extends Configuration> implements
      *         object
      * @throws ConfigurationException if an error occurs
      */
-    protected synchronized final BeanDeclaration getResultDeclaration()
-            throws ConfigurationException
+    protected synchronized final BeanDeclaration getResultDeclaration() throws ConfigurationException
     {
         if (resultDeclaration == null)
         {
