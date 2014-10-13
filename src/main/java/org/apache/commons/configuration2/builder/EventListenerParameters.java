@@ -51,8 +51,9 @@ import org.apache.commons.configuration2.event.EventType;
  * </p>
  * <p>
  * In order to support a configuration builder's {@code configure()} method,
- * this class implements the {@code BuilderParameters} interface. However, this
- * is just a dummy implementation; no parameters are propagated to the builder.
+ * this class implements the {@code BuilderParameters} interface.
+ * ???
+ * However, this is just a dummy implementation; no parameters are propagated to the builder.
  * </p>
  *
  * @version $Id$

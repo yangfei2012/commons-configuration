@@ -157,7 +157,8 @@ public final class Parameters
      * @throws IllegalArgumentException if a required parameter is missing
      */
     public <T> void registerDefaultsHandler(Class<T> paramsClass,
-            DefaultParametersHandler<? super T> handler, Class<?> startClass)
+                                            DefaultParametersHandler<? super T> handler,
+                                            Class<?> startClass)
     {
         getDefaultParametersManager().registerDefaultsHandler(paramsClass,
                 handler, startClass);

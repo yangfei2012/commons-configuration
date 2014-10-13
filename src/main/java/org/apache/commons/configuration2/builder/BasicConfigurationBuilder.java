@@ -705,8 +705,8 @@ public class BasicConfigurationBuilder<T extends Configuration> implements
     {
         if (params instanceof EventListenerProvider)
         {
-            eventListeners.addAll(((EventListenerProvider) params)
-                    .getListeners());
+            eventListeners.addAll(
+                    ((EventListenerProvider) params).getListeners());
         }
     }
 

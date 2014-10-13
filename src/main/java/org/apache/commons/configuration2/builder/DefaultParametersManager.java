@@ -128,7 +128,8 @@ public class DefaultParametersManager
      * @throws IllegalArgumentException if a required parameter is missing
      */
     public <T> void registerDefaultsHandler(Class<T> paramsClass,
-            DefaultParametersHandler<? super T> handler, Class<?> startClass)
+                                            DefaultParametersHandler<? super T> handler,
+                                            Class<?> startClass)
     {
         if (paramsClass == null)
         {
@@ -227,8 +228,9 @@ public class DefaultParametersManager
          * @param cls the handler's data class
          * @param startCls the start class
          */
-        public DefaultHandlerData(DefaultParametersHandler<?> h, Class<?> cls,
-                Class<?> startCls)
+        public DefaultHandlerData(DefaultParametersHandler<?> h,
+                                  Class<?> cls,
+                                  Class<?> startCls)
         {
             handler = h;
             parameterClass = cls;

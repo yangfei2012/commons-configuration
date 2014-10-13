@@ -25,9 +25,9 @@ public class MyTest {
 
     public static void main(String[] args) {
 
-        //testPropertiesLoad();
+        testPropertiesLoad();
 
-        testEvent();
+        //testEvent();
 
         System.out.println("xxxxxxxxx");
     }
