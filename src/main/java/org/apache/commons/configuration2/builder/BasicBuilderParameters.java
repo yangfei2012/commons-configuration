@@ -55,8 +55,7 @@ public class BasicBuilderParameters implements Cloneable, BuilderParameters,
         BasicBuilderProperties<BasicBuilderParameters>
 {
     /** The key of the <em>throwExceptionOnMissing</em> property. */
-    private static final String PROP_THROW_EXCEPTION_ON_MISSING =
-            "throwExceptionOnMissing";
+    private static final String PROP_THROW_EXCEPTION_ON_MISSING = "throwExceptionOnMissing";
 
     /** The key of the <em>listDelimiterHandler</em> property. */
     private static final String PROP_LIST_DELIMITER_HANDLER = "listDelimiterHandler";
@@ -83,8 +82,7 @@ public class BasicBuilderParameters implements Cloneable, BuilderParameters,
     private static final String PROP_CONVERSION_HANDLER = "conversionHandler";
 
     /** The key for the {@code BeanHelper}. */
-    private static final String PROP_BEAN_HELPER = RESERVED_PARAMETER_PREFIX
-            + "BeanHelper";
+    private static final String PROP_BEAN_HELPER = RESERVED_PARAMETER_PREFIX + "BeanHelper";
 
     /** The map for storing the current property values. */
     private Map<String, Object> properties;
@@ -106,8 +104,7 @@ public class BasicBuilderParameters implements Cloneable, BuilderParameters,
     @Override
     public Map<String, Object> getParameters()
     {
-        HashMap<String, Object> result =
-                new HashMap<String, Object>(properties);
+        HashMap<String, Object> result = new HashMap<String, Object>(properties);
         if (result.containsKey(PROP_INTERPOLATOR))
         {
             // A custom ConfigurationInterpolator overrides lookups
@@ -423,12 +420,10 @@ public class BasicBuilderParameters implements Cloneable, BuilderParameters,
      */
     private static void createDefensiveCopies(HashMap<String, Object> params)
     {
-        Map<String, ? extends Lookup> prefixLookups =
-                fetchPrefixLookups(params);
+        Map<String, ? extends Lookup> prefixLookups = fetchPrefixLookups(params);
         if (prefixLookups != null)
         {
-            params.put(PROP_PREFIX_LOOKUPS, new HashMap<String, Lookup>(
-                    prefixLookups));
+            params.put(PROP_PREFIX_LOOKUPS, new HashMap<String, Lookup>(prefixLookups));
         }
         Collection<? extends Lookup> defLookups = fetchDefaultLookups(params);
         if (defLookups != null)

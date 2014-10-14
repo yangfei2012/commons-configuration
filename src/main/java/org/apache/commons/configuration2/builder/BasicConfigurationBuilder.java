@@ -169,7 +169,8 @@ public class BasicConfigurationBuilder<T extends Configuration> implements
      * @throws IllegalArgumentException if the result class is <b>null</b>
      */
     public BasicConfigurationBuilder(Class<? extends T> resCls,
-            Map<String, Object> params, boolean allowFailOnInit)
+                                     Map<String, Object> params,
+                                     boolean allowFailOnInit)
     {
         if (resCls == null)
         {
@@ -212,8 +213,7 @@ public class BasicConfigurationBuilder<T extends Configuration> implements
      *        <b>null</b>, then all initialization parameters are removed
      * @return a reference to this builder for method chaining
      */
-    public synchronized BasicConfigurationBuilder<T> setParameters(
-            Map<String, Object> params)
+    public synchronized BasicConfigurationBuilder<T> setParameters(Map<String, Object> params)
     {
         updateParameters(params);
         return this;
@@ -270,8 +270,10 @@ public class BasicConfigurationBuilder<T extends Configuration> implements
     @Override
     public T getConfiguration() throws ConfigurationException
     {
-        fireBuilderEvent(new ConfigurationBuilderEvent(this,
-                ConfigurationBuilderEvent.CONFIGURATION_REQUEST));
+        fireBuilderEvent(
+                new ConfigurationBuilderEvent(
+                        this, ConfigurationBuilderEvent.CONFIGURATION_REQUEST)
+        );
 
         T resObj = result;
         boolean created = false;
@@ -512,8 +514,7 @@ public class BasicConfigurationBuilder<T extends Configuration> implements
      */
     protected final BeanHelper fetchBeanHelper()
     {
-        BeanHelper helper =
-                BasicBuilderParameters.fetchBeanHelper(getParameters());
+        BeanHelper helper = BasicBuilderParameters.fetchBeanHelper(getParameters());
         return (helper != null) ? helper : BeanHelper.INSTANCE;
     }
 

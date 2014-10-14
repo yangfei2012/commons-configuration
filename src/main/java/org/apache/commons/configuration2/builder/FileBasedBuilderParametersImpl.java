@@ -46,19 +46,18 @@ import org.apache.commons.configuration2.io.FileSystem;
  * @version $Id$
  * @since 2.0
  */
-public class FileBasedBuilderParametersImpl extends BasicBuilderParameters
-        implements FileBasedBuilderProperties<FileBasedBuilderParametersImpl>
+public class FileBasedBuilderParametersImpl extends
+        BasicBuilderParameters implements
+        FileBasedBuilderProperties<FileBasedBuilderParametersImpl>
 {
     /** Constant for the key in the parameters map used by this class. */
-    private static final String PARAM_KEY = RESERVED_PARAMETER_PREFIX
-            + "fileBased";
+    private static final String PARAM_KEY = RESERVED_PARAMETER_PREFIX + "fileBased";
 
     /** Property name for the reloading refresh delay. */
     private static final String PROP_REFRESH_DELAY = "reloadingRefreshDelay";
 
     /** Property name of the reloading detector factory. */
-    private static final String PROP_DETECTOR_FACTORY =
-            "reloadingDetectorFactory";
+    private static final String PROP_DETECTOR_FACTORY = "reloadingDetectorFactory";
 
     /**
      * Stores the associated file handler for the location of the configuration.

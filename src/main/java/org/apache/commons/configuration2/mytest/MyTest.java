@@ -4,6 +4,7 @@ import org.apache.commons.configuration2.AbstractConfiguration;
 import org.apache.commons.configuration2.Configuration;
 import org.apache.commons.configuration2.PropertiesConfiguration;
 import org.apache.commons.configuration2.builder.BasicConfigurationBuilder;
+import org.apache.commons.configuration2.builder.EventListenerParameters;
 import org.apache.commons.configuration2.builder.FileBasedConfigurationBuilder;
 import org.apache.commons.configuration2.builder.ReloadingFileBasedConfigurationBuilder;
 import org.apache.commons.configuration2.builder.fluent.FileBasedBuilderParameters;
@@ -27,7 +28,7 @@ public class MyTest {
 
         testPropertiesLoad();
 
-        //testEvent();
+        //testEvent4Configuration();
 
         System.out.println("xxxxxxxxx");
     }
@@ -52,7 +53,7 @@ public class MyTest {
         }
     }
 
-    public static void testEvent() {
+    public static void testEvent4Configuration() {
         Parameters params = new Parameters();
         PropertiesBuilderParameters propertiesParams = params.properties();
         propertiesParams.setFileName("mytest.properties");
@@ -70,10 +71,31 @@ public class MyTest {
 
             config.addProperty("newProperty", "newValue"); // will fire an event
 
-        } catch(ConfigurationException cex) {
-        }
+        } catch(ConfigurationException cex) {}
+    }
 
+    public static void testEvent4ConfigurationBuilder() {
+        Parameters params = new Parameters();
+        PropertiesBuilderParameters propertiesParams = params.properties();
 
+        EventListenerParameters eventListenerParams = new EventListenerParameters();
+
+        // fluent API
+        FileBasedConfigurationBuilder<PropertiesConfiguration> builder =
+                new FileBasedConfigurationBuilder<PropertiesConfiguration>(PropertiesConfiguration.class)
+                        .configure(
+                                propertiesParams.setFileName("mytest.properties"),
+                                eventListenerParams.addEventListener(
+                                        ConfigurationEvent.ANY,
+                                        new ConfigurationLogListener())
+                        );
+
+        try {
+            Configuration config = builder.getConfiguration();
+            String backColor = config.getString("colors.background");
+            System.out.println(backColor);
+
+        } catch(ConfigurationException cex) {}
     }
 
     public static void testReload() {
