@@ -279,8 +279,8 @@ public class FileBasedConfigurationBuilder<T extends FileBasedConfiguration>
     {
         super.initResultInstance(obj);
         FileHandler srcHandler =
-                (currentFileHandler != null && !resetParameters) ? currentFileHandler
-                        : fetchFileHandlerFromParameters();
+                (currentFileHandler != null && !resetParameters) ?
+                currentFileHandler : fetchFileHandlerFromParameters();
         currentFileHandler = new FileHandler(obj, srcHandler);
 
         if (autoSaveListener != null)

@@ -138,12 +138,10 @@ public class DefaultBeanFactory implements BeanFactory
      * @return the new bean instance
      * @throws Exception if an error occurs
      */
-    protected Object createBeanInstance(BeanCreationContext bcc)
-            throws Exception
+    protected Object createBeanInstance(BeanCreationContext bcc) throws Exception
     {
-        Constructor<?> ctor =
-                findMatchingConstructor(bcc.getBeanClass(),
-                        bcc.getBeanDeclaration());
+        Constructor<?> ctor = findMatchingConstructor(
+                bcc.getBeanClass(), bcc.getBeanDeclaration());
         Object[] args = fetchConstructorArgs(ctor, bcc);
         return ctor.newInstance(args);
     }
@@ -318,8 +316,10 @@ public class DefaultBeanFactory implements BeanFactory
      * @param matchingConstructors the list with matching constructors
      * @throws ConfigurationRuntimeException if there is not exactly one match
      */
-    private static <T> void checkSingleMatchingConstructor(Class<T> beanClass,
-            BeanDeclaration data, List<Constructor<T>> matchingConstructors)
+    private static <T> void checkSingleMatchingConstructor(
+            Class<T> beanClass,
+            BeanDeclaration data,
+            List<Constructor<T>> matchingConstructors)
     {
         if (matchingConstructors.isEmpty())
         {

@@ -1369,8 +1369,7 @@ public class FileHandler
      * @return the current {@code FileLocator} to be used for the calling
      *         operation
      */
-    private FileLocator checkContentAndGetLocator()
-            throws ConfigurationException
+    private FileLocator checkContentAndGetLocator() throws ConfigurationException
     {
         checkContent();
         return getFileLocator();

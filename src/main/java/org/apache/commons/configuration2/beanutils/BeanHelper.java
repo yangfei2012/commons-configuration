@@ -239,8 +239,7 @@ public final class BeanHelper
 
                         for (Object elemDef : (Collection<?>) prop)
                         {
-                            beanCollection
-                                    .add(createBean((BeanDeclaration) elemDef));
+                            beanCollection.add(createBean((BeanDeclaration)elemDef));
                         }
 
                         initProperty(bean, propName, beanCollection);
@@ -248,7 +247,9 @@ public final class BeanHelper
                     else
                     {
                         initProperty(bean, propName, createBean(
-                            (BeanDeclaration) e.getValue(), defaultClass));
+                                (BeanDeclaration)e.getValue(),
+                                defaultClass)
+                        );
                     }
                 }
             }
@@ -442,8 +443,9 @@ public final class BeanHelper
      * @return the new bean
      * @throws ConfigurationRuntimeException if an error occurs
      */
-    public Object createBean(BeanDeclaration data, Class<?> defaultClass,
-            Object param)
+    public Object createBean(BeanDeclaration data,
+                             Class<?> defaultClass,
+                             Object param)
     {
         if (data == null)
         {
@@ -535,7 +537,8 @@ public final class BeanHelper
      * @throws ConfigurationRuntimeException if the class cannot be determined
      */
     private static Class<?> fetchBeanClass(BeanDeclaration data,
-            Class<?> defaultClass, BeanFactory factory)
+                                           Class<?> defaultClass,
+                                           BeanFactory factory)
     {
         String clsName = data.getBeanClassName();
         if (clsName != null)
