@@ -230,8 +230,7 @@ public class BasicConfigurationBuilder<T extends Configuration> implements
     public synchronized BasicConfigurationBuilder<T> addParameters(
             Map<String, Object> params)
     {
-        Map<String, Object> newParams =
-                new HashMap<String, Object>(getParameters());
+        Map<String, Object> newParams = new HashMap<String, Object>(getParameters());
         if (params != null)
         {
             newParams.putAll(params);

@@ -554,8 +554,7 @@ public class XMLConfiguration extends BaseHierarchicalConfiguration implements
                 constructHierarchy(rootBuilder, rootValue,
                         document.getDocumentElement(), elemRefMap, true, 0);
         attributes.remove(ATTR_SPACE_INTERNAL);
-        ImmutableNode top =
-                rootBuilder.value(rootValue.getValue())
+        ImmutableNode top = rootBuilder.value(rootValue.getValue())
                         .addAttributes(attributes).create();
         getSubConfigurationParentModel().mergeRoot(top,
                 document.getDocumentElement().getTagName(), elemRefMap,

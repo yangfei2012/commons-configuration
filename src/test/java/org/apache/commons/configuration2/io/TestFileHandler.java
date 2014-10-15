@@ -1583,8 +1583,7 @@ public class TestFileHandler
             FileBasedTestImpl implements InputStreamSupport
     {
         @Override
-        public void read(InputStream in) throws ConfigurationException,
-                IOException
+        public void read(InputStream in) throws ConfigurationException, IOException
         {
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
             int c;

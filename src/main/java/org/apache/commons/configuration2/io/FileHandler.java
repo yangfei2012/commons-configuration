@@ -662,8 +662,7 @@ public class FileHandler
         do
         {
             FileLocator locator = getFileLocator();
-            FileLocator fullLocator =
-                    FileLocatorUtils.fullyInitializedLocator(locator);
+            FileLocator fullLocator = FileLocatorUtils.fullyInitializedLocator(locator);
             if (fullLocator == null)
             {
                 result = false;
@@ -671,9 +670,8 @@ public class FileHandler
             }
             else
             {
-                result =
-                        fullLocator != locator
-                                || FileLocatorUtils.isFullyInitialized(locator);
+                result = fullLocator != locator ||
+                         FileLocatorUtils.isFullyInitialized(locator);
             }
             done = fileLocator.compareAndSet(locator, fullLocator);
         } while (!done);
@@ -926,8 +924,7 @@ public class FileHandler
         {
             if (getContent() instanceof FileLocatorAware)
             {
-                FileLocator locator =
-                        prepareNullLocatorBuilder().sourceURL(url).create();
+                FileLocator locator = prepareNullLocatorBuilder().sourceURL(url).create();
                 ((FileLocatorAware) getContent()).initFileLocator(locator);
             }
         }
@@ -1030,8 +1027,7 @@ public class FileHandler
      * @param url the URL of the file to be loaded (if known)
      * @throws ConfigurationException if an error occurs
      */
-    private void loadFromStream(InputStream in, String encoding, URL url)
-            throws ConfigurationException
+    private void loadFromStream(InputStream in, String encoding, URL url) throws ConfigurationException
     {
         checkContent();
         SynchronizerSupport syncSupport = fetchSynchronizerSupport();
@@ -1062,8 +1058,7 @@ public class FileHandler
      * @param in the input stream
      * @throws ConfigurationException if an error occurs
      */
-    private void loadFromStreamDirectly(InputStream in)
-            throws ConfigurationException
+    private void loadFromStreamDirectly(InputStream in) throws ConfigurationException
     {
         try
         {
@@ -1083,8 +1078,7 @@ public class FileHandler
      * @param encoding the encoding
      * @throws ConfigurationException if an error occurs
      */
-    private void loadFromTransformedStream(InputStream in, String encoding)
-            throws ConfigurationException
+    private void loadFromTransformedStream(InputStream in, String encoding) throws ConfigurationException
     {
         Reader reader = null;
 

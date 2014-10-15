@@ -297,8 +297,7 @@ public final class FileLocatorUtils
         }
 
         URL url = locate(locator);
-        return (url != null) ? createFullyInitializedLocatorFromURL(locator,
-                url) : null;
+        return (url != null) ? createFullyInitializedLocatorFromURL(locator,url) : null;
     }
 
     /**
@@ -323,8 +322,8 @@ public final class FileLocatorUtils
             return null;
         }
 
-        return obtainLocationStrategy(locator).locate(
-                obtainFileSystem(locator), locator);
+        return obtainLocationStrategy(locator)
+                .locate(obtainFileSystem(locator), locator);
     }
 
     /**
@@ -337,8 +336,7 @@ public final class FileLocatorUtils
      * @return the URL pointing to the referenced file
      * @throws ConfigurationException if the file cannot be resolved
      */
-    public static URL locateOrThrow(FileLocator locator)
-            throws ConfigurationException
+    public static URL locateOrThrow(FileLocator locator) throws ConfigurationException
     {
         URL url = locate(locator);
         if (url == null)
@@ -622,8 +620,8 @@ public final class FileLocatorUtils
      */
     static FileSystem obtainFileSystem(FileLocator locator)
     {
-        return (locator != null) ? ObjectUtils.defaultIfNull(
-                locator.getFileSystem(), DEFAULT_FILE_SYSTEM)
+        return (locator != null) ?
+                ObjectUtils.defaultIfNull(locator.getFileSystem(), DEFAULT_FILE_SYSTEM)
                 : DEFAULT_FILE_SYSTEM;
     }
 

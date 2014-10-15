@@ -554,8 +554,7 @@ public class PropertiesConfiguration extends BaseConfiguration
      * @throws ConfigurationException if an error occurs
      * @since 1.3
      */
-    boolean propertyLoaded(String key, String value)
-            throws ConfigurationException
+    boolean propertyLoaded(String key, String value) throws ConfigurationException
     {
         boolean result;
 
@@ -564,8 +563,7 @@ public class PropertiesConfiguration extends BaseConfiguration
         {
             if (isIncludesAllowed())
             {
-                Collection<String> files =
-                        getListDelimiterHandler().split(value, true);
+                Collection<String> files = getListDelimiterHandler().split(value, true);
                 for (String f : files)
                 {
                     loadIncludeFile(interpolate(f));
@@ -573,7 +571,6 @@ public class PropertiesConfiguration extends BaseConfiguration
             }
             result = false;
         }
-
         else
         {
             addPropertyInternal(key, value);

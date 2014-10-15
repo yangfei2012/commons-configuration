@@ -477,8 +477,7 @@ public class PropertiesConfigurationLayout implements EventListener<Configuratio
      * @param in the reader to the properties file
      * @throws ConfigurationException if an error occurs
      */
-    public void load(PropertiesConfiguration config, Reader in)
-            throws ConfigurationException
+    public void load(PropertiesConfiguration config, Reader in) throws ConfigurationException
     {
         if (++loadCounter == 1)
         {
@@ -491,11 +490,9 @@ public class PropertiesConfigurationLayout implements EventListener<Configuratio
         {
             while (reader.nextProperty())
             {
-                if (config.propertyLoaded(reader.getPropertyName(),
-                        reader.getPropertyValue()))
+                if (config.propertyLoaded(reader.getPropertyName(), reader.getPropertyValue()))
                 {
-                    boolean contained = layoutData.containsKey(reader
-                            .getPropertyName());
+                    boolean contained = layoutData.containsKey(reader.getPropertyName());
                     int blancLines = 0;
                     int idx = checkHeaderComment(reader.getCommentLines());
                     while (idx < reader.getCommentLines().size()
@@ -506,8 +503,7 @@ public class PropertiesConfigurationLayout implements EventListener<Configuratio
                     }
                     String comment = extractComment(reader.getCommentLines(),
                             idx, reader.getCommentLines().size() - 1);
-                    PropertyLayoutData data = fetchLayoutData(reader
-                            .getPropertyName());
+                    PropertyLayoutData data = fetchLayoutData(reader.getPropertyName());
                     if (contained)
                     {
                         data.addComment(comment);

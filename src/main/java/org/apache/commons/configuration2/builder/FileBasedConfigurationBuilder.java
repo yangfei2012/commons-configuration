@@ -279,7 +279,7 @@ public class FileBasedConfigurationBuilder<T extends FileBasedConfiguration>
     {
         super.initResultInstance(obj);
         FileHandler srcHandler =
-                (currentFileHandler != null && !resetParameters) ?
+                (currentFileHandler!=null && !resetParameters) ?
                 currentFileHandler : fetchFileHandlerFromParameters();
         currentFileHandler = new FileHandler(obj, srcHandler);
 
@@ -301,8 +301,7 @@ public class FileBasedConfigurationBuilder<T extends FileBasedConfiguration>
      * @param handler the new current {@code FileHandler}
      * @throws ConfigurationException if an error occurs
      */
-    protected void initFileHandler(FileHandler handler)
-            throws ConfigurationException
+    protected void initFileHandler(FileHandler handler) throws ConfigurationException
     {
         initEncoding(handler);
         if (handler.isLocationDefined())
@@ -324,8 +323,7 @@ public class FileBasedConfigurationBuilder<T extends FileBasedConfiguration>
     private FileHandler fetchFileHandlerFromParameters()
     {
         FileBasedBuilderParametersImpl fileParams =
-                FileBasedBuilderParametersImpl.fromParameters(getParameters(),
-                        false);
+                FileBasedBuilderParametersImpl.fromParameters(getParameters(), false);
         if (fileParams == null)
         {
             fileParams = new FileBasedBuilderParametersImpl();
