@@ -26,9 +26,11 @@ public class MyTest {
 
     public static void main(String[] args) {
 
-        testPropertiesLoad();
+        //testPropertiesLoad();
 
         //testEvent4Configuration();
+
+        testReload();
 
         System.out.println("xxxxxxxxx");
     }
@@ -100,7 +102,7 @@ public class MyTest {
 
     public static void testReload() {
         // Read data from this file
-        File propertiesFile = new File("config.properties");
+        File propertiesFile = new File("mytest.properties");
 
         Parameters params = new Parameters();
         FileBasedBuilderParameters fileBasedParams = params.fileBased();
@@ -111,8 +113,19 @@ public class MyTest {
                         .configure(fileBasedParams);
 
         PeriodicReloadingTrigger trigger = new PeriodicReloadingTrigger(
-                builder.getReloadingController(), null, 1, TimeUnit.MINUTES);
+                builder.getReloadingController(), null, 10, TimeUnit.SECONDS);
 
         trigger.start();
+
+//        try {
+//            Configuration config = builder.getConfiguration();
+//            String backColor = config.getString("colors.background");
+//            System.out.println(backColor);
+//
+//        } catch(ConfigurationException cex) {}
+
+        try{
+            Thread.sleep(400000000);
+        } catch (Exception e) {}
     }
 }

@@ -87,8 +87,11 @@ public class PeriodicReloadingTrigger
      *        default executor service is created
      * @throws IllegalArgumentException if a required argument is missing
      */
-    public PeriodicReloadingTrigger(ReloadingController ctrl, Object ctrlParam,
-            long triggerPeriod, TimeUnit unit, ScheduledExecutorService exec)
+    public PeriodicReloadingTrigger(ReloadingController ctrl,
+                                    Object ctrlParam,
+                                    long triggerPeriod,
+                                    TimeUnit unit,
+                                    ScheduledExecutorService exec)
     {
         if (ctrl == null)
         {
@@ -100,8 +103,7 @@ public class PeriodicReloadingTrigger
         controllerParam = ctrlParam;
         period = triggerPeriod;
         timeUnit = unit;
-        executorService =
-                (exec != null) ? exec : createDefaultExecutorService();
+        executorService = (exec != null) ? exec : createDefaultExecutorService();
     }
 
     /**
@@ -115,8 +117,10 @@ public class PeriodicReloadingTrigger
      * @param unit the time unit for the period
      * @throws IllegalArgumentException if a required argument is missing
      */
-    public PeriodicReloadingTrigger(ReloadingController ctrl, Object ctrlParam,
-            long triggerPeriod, TimeUnit unit)
+    public PeriodicReloadingTrigger(ReloadingController ctrl,
+                                    Object ctrlParam,
+                                    long triggerPeriod,
+                                    TimeUnit unit)
     {
         this(ctrl, ctrlParam, triggerPeriod, unit, null);
     }
@@ -131,10 +135,8 @@ public class PeriodicReloadingTrigger
     {
         if (!isRunning())
         {
-            triggerTask =
-                    getExecutorService().scheduleAtFixedRate(
-                            createTriggerTaskCommand(), period, period,
-                            timeUnit);
+            triggerTask = getExecutorService().scheduleAtFixedRate(
+                            createTriggerTaskCommand(), period, period, timeUnit);
         }
     }
 
@@ -215,6 +217,7 @@ public class PeriodicReloadingTrigger
             @Override
             public void run()
             {
+                System.out.println("qqqqqqqqqqq");
                 controller.checkForReloading(controllerParam);
             }
         };
@@ -228,8 +231,7 @@ public class PeriodicReloadingTrigger
      */
     private static ScheduledExecutorService createDefaultExecutorService()
     {
-        ThreadFactory factory =
-                new BasicThreadFactory.Builder()
+        ThreadFactory factory = new BasicThreadFactory.Builder()
                         .namingPattern("ReloadingTrigger-%s").daemon(true)
                         .build();
         return Executors.newScheduledThreadPool(1, factory);

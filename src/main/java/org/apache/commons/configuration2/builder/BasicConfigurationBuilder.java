@@ -343,8 +343,8 @@ public class BasicConfigurationBuilder<T extends Configuration> implements
         {
             removeEventListeners(oldResult);
         }
-        fireBuilderEvent(new ConfigurationBuilderEvent(this,
-                ConfigurationBuilderEvent.RESET));
+        fireBuilderEvent(
+                new ConfigurationBuilderEvent(this, ConfigurationBuilderEvent.RESET));
     }
 
     /**
@@ -384,8 +384,7 @@ public class BasicConfigurationBuilder<T extends Configuration> implements
      *        be <b>null</b>)
      * @throws IllegalArgumentException if the controller is <b>null</b>
      */
-    public final void connectToReloadingController(
-            ReloadingController controller)
+    public final void connectToReloadingController(ReloadingController controller)
     {
         if (controller == null)
         {

@@ -85,10 +85,8 @@ class ReloadingBuilderSupportListener implements EventListener<Event>
         ReloadingBuilderSupportListener listener =
                 new ReloadingBuilderSupportListener(configBuilder, controller);
         controller.addEventListener(ReloadingEvent.ANY, listener);
-        configBuilder
-                .installEventListener(
-                        ConfigurationBuilderResultCreatedEvent.RESULT_CREATED,
-                        listener);
+        configBuilder.installEventListener(
+                ConfigurationBuilderResultCreatedEvent.RESULT_CREATED, listener);
         return listener;
     }
 
@@ -100,8 +98,8 @@ class ReloadingBuilderSupportListener implements EventListener<Event>
     @Override
     public void onEvent(Event event)
     {
-        if (ConfigurationBuilderResultCreatedEvent.RESULT_CREATED.equals(event
-                .getEventType()))
+        if (ConfigurationBuilderResultCreatedEvent.RESULT_CREATED
+                .equals(event.getEventType()))
         {
             reloadingController.resetReloadingState();
         }
