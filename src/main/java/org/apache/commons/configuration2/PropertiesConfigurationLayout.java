@@ -483,6 +483,8 @@ public class PropertiesConfigurationLayout implements EventListener<Configuratio
         {
             config.removeEventListener(ConfigurationEvent.ANY, this);
         }
+
+        // ??line-reader????????
         PropertiesConfiguration.PropertiesReader reader =
                 config.getIOFactory().createPropertiesReader(in);
 
@@ -495,8 +497,8 @@ public class PropertiesConfigurationLayout implements EventListener<Configuratio
                     boolean contained = layoutData.containsKey(reader.getPropertyName());
                     int blancLines = 0;
                     int idx = checkHeaderComment(reader.getCommentLines());
-                    while (idx < reader.getCommentLines().size()
-                            && reader.getCommentLines().get(idx).length() < 1)
+                    while (idx < reader.getCommentLines().size() &&
+                           reader.getCommentLines().get(idx).length() < 1)
                     {
                         idx++;
                         blancLines++;
@@ -518,8 +520,8 @@ public class PropertiesConfigurationLayout implements EventListener<Configuratio
                 }
             }
 
-            setFooterComment(extractComment(reader.getCommentLines(), 0, reader
-                    .getCommentLines().size() - 1));
+            setFooterComment(extractComment(reader.getCommentLines(), 0,
+                                            reader.getCommentLines().size() - 1));
         }
         catch (IOException ioex)
         {
