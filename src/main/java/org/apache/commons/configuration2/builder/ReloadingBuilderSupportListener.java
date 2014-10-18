@@ -98,8 +98,7 @@ class ReloadingBuilderSupportListener implements EventListener<Event>
     @Override
     public void onEvent(Event event)
     {
-        if (ConfigurationBuilderResultCreatedEvent.RESULT_CREATED
-                .equals(event.getEventType()))
+        if (ConfigurationBuilderResultCreatedEvent.RESULT_CREATED.equals(event.getEventType()))
         {
             reloadingController.resetReloadingState();
         }

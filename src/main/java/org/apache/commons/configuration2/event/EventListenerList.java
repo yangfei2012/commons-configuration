@@ -63,8 +63,7 @@ public class EventListenerList
      */
     public EventListenerList()
     {
-        listeners =
-                new CopyOnWriteArrayList<EventListenerRegistrationData<?>>();
+        listeners = new CopyOnWriteArrayList<EventListenerRegistrationData<?>>();
     }
 
     /**

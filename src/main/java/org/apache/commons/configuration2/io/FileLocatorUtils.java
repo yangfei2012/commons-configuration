@@ -650,8 +650,8 @@ public final class FileLocatorUtils
      * @param url the URL
      * @return the fully initialized {@code FileLocator}
      */
-    private static FileLocator createFullyInitializedLocatorFromURL(FileLocator src,
-            URL url)
+    private static FileLocator createFullyInitializedLocatorFromURL(
+            FileLocator src, URL url)
     {
         return fileLocator(src).sourceURL(url).fileName(getFileName(url))
                 .basePath(getBasePath(url)).create();

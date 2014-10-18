@@ -607,14 +607,11 @@ public class PropertiesConfigurationLayout implements EventListener<Configuratio
         {
             if (ConfigurationEvent.ADD_PROPERTY.equals(event.getEventType()))
             {
-                boolean contained =
-                        layoutData.containsKey(event.getPropertyName());
-                PropertyLayoutData data =
-                        fetchLayoutData(event.getPropertyName());
+                boolean contained = layoutData.containsKey(event.getPropertyName());
+                PropertyLayoutData data = fetchLayoutData(event.getPropertyName());
                 data.setSingleLine(!contained);
             }
-            else if (ConfigurationEvent.CLEAR_PROPERTY.equals(event
-                    .getEventType()))
+            else if (ConfigurationEvent.CLEAR_PROPERTY.equals(event.getEventType()))
             {
                 layoutData.remove(event.getPropertyName());
             }
@@ -622,8 +619,7 @@ public class PropertiesConfigurationLayout implements EventListener<Configuratio
             {
                 clear();
             }
-            else if (ConfigurationEvent.SET_PROPERTY.equals(event
-                    .getEventType()))
+            else if (ConfigurationEvent.SET_PROPERTY.equals(event.getEventType()))
             {
                 fetchLayoutData(event.getPropertyName());
             }
